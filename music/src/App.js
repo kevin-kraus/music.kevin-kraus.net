@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import Playlist from "./components/Playlist";
 import kkraus from './kkraus_logo.png';
 import Loading from "./components/Loading";
+import Footer from "./components/Footer";
 
 function App() {
     const [playlists, setPlaylists] = useState([]);
@@ -24,7 +25,6 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
                 <a href="https://kevin-kraus.com">
                     <h1>
                         <img className="kkraus" src={kkraus}/>
@@ -38,7 +38,7 @@ function App() {
                 {playlists.length === 0 &&
                 <Loading/>
                 }
-            </header>
+            <Footer/>
         </div>
     );
 }
