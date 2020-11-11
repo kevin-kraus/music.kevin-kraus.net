@@ -5,12 +5,12 @@ import Playlist from "./components/Playlist";
 import kkraus from './kkraus_logo.png';
 import Loading from "./components/Loading";
 import Footer from "./components/Footer";
+import config from "./config.json"
 
 function App() {
     const [playlists, setPlaylists] = useState([]);
 
-    const playlistsToFetch = [
-    ];
+    const playlistsToFetch = config.SPOTIFY_PLAYLISTS;
 
     useEffect(async () => {
         var fetchedPlaylists = [];

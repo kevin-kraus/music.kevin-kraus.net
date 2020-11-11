@@ -1,10 +1,11 @@
 import axios from 'axios';
 import * as qs from "querystring";
 import SpotifyPlaylist from "../../model/spotifyPlaylist";
+import config from "../../config.json"
 
-var client_id = "";
-var client_secret = "";
-var access_token = "";
+var client_id = config.SPOTIFY_CLIENT_ID;
+var client_secret = config.SPOTIFY_CLIENT_SECRET;
+var access_token;
 
 
 async function authorizeApplication() {
@@ -32,7 +33,7 @@ function mapToPlaylist(response) {
 }
 
 export async function fetchPlaylistInfo(playlistId) {
-    if(access_token === "") {
+    if(access_token === undefined) {
         await authorizeApplication();
     }
     var fieldsToFetch = "name,description,images,uri";
