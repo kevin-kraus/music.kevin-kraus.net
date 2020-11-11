@@ -6,8 +6,8 @@ function Playlist(props) {
             <div className={styles.playlistContainer}>
                 <img className={styles.playlistLogo} src={props.playlist.image_url} alt="playlist_logo"/>
                 <div className={styles.playlistDetails}>
-                    <p className={styles.playlistName}>{props.playlist.name}</p>
-                    <p className={styles.playlistDescription}>{props.playlist.description}</p>
+                    <div className={styles.playlistName}>{props.playlist.name}</div>
+                    <div className={styles.playlistDescription}>{props.playlist.description}</div>
                 </div>
             </div>
         </a>

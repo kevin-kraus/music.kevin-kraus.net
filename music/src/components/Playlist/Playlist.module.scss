@@ -1,3 +1,5 @@
+@import "src/helper/Breakpoints";
+
 .playlistLogo {
   vertical-align: middle;
   width: 100%;
@@ -26,17 +28,31 @@ a{
   grid-template-rows: 20vw 20vw;
   grid-row: 1 / span 2;
   grid-column: 2;
-  word-break: break-all;
+  word-break: keep-all;
   line-height: 1;
+  margin-right: 15px;
 
 }
 
 .playlistName {
+  display: grid;
   grid-row: 1;
-  align-self: end;
+  align-self: center;
+  font-size: 2rem;
+  font-weight: bold;
+  align-content: center;
+  justify-content: center;
+  @include breakpoint('xs') {
+    word-break: break-word;
+    font-size: 24px;
+  }
 }
 
 .playlistDescription {
   grid-row: 2;
   align-self: start;
+  font-size: 1rem;
+  @include breakpoint('xs') {
+    font-size: 14px;
+  }
 }
