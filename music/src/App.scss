@@ -1,3 +1,5 @@
+@import "./helper/Breakpoints";
+
 .App {
   text-align: center;
   background-color: #282c34;
@@ -11,8 +13,16 @@
   overflow: hidden;
 }
 
+.profileLink {
+  text-decoration: underline;
+  color: white;
+}
+.headerText {
+  margin-top: 0;
+}
+
 .kkraus {
-  height: 60px;
+  width: 35vw;
 }
 
 .App-logo {

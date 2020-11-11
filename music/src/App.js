@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import {fetchPlaylistInfo} from "./service/spotify/spotifyHandler";
 import React, {useEffect, useState} from "react";
 import Playlist from "./components/Playlist";
@@ -33,7 +33,10 @@ function App() {
                         <img alt={"Kevin Kraus"} className="kkraus" src={kkraus}/>
                     </h1>
                 </a>
-                <p>Find my most liked playlists here.</p>
+                <h4 className="headerText">Find my most liked playlists here.<br/>
+                    Otherwise <a className="profileLink" href={config.SPOTIFY_PROFILE_URL}>here</a> you can find my Spotify profile.</h4>
+
+
                 {playlists.map(playlist => (
                     <Playlist playlist={playlist}/>
                 ))
