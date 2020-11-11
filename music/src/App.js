@@ -12,22 +12,25 @@ function App() {
 
     const playlistsToFetch = config.SPOTIFY_PLAYLISTS;
 
-    useEffect(async () => {
-        var fetchedPlaylists = [];
-        var playlistId;
-        for (playlistId of playlistsToFetch) {
-            var playlist = await fetchPlaylistInfo(playlistId);
-            fetchedPlaylists.push(playlist);
+    useEffect(() => {
+        async function loadPlaylists() {
+            var fetchedPlaylists = [];
+            var playlistId;
+            for (playlistId of playlistsToFetch) {
+                var playlist = await fetchPlaylistInfo(playlistId);
+                fetchedPlaylists.push(playlist);
+            }
+            setPlaylists(fetchedPlaylists);
         }
-        setPlaylists(fetchedPlaylists);
-    }, []);
+        loadPlaylists().then(()=> {});
+    }, [playlistsToFetch]);
 
 
     return (
         <div className="App">
                 <a href="https://kevin-kraus.com">
                     <h1>
-                        <img className="kkraus" src={kkraus}/>
+                        <img alt={"Kevin Kraus"} className="kkraus" src={kkraus}/>
                     </h1>
                 </a>
                 <p>Find my most liked playlists here.</p>
