@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: music.kevin-kraus.com");
 require_once("Playlist.php");
 
 class API
