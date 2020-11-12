@@ -25,7 +25,7 @@ class API
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://api.spotify.com/v1/playlists/" . $playlistId . "?fields=name%2Cdescription%2Cimages%2Curi%2Cfollowers",
+            CURLOPT_URL => "https://api.spotify.com/v1/playlists/" . $playlistId . "?fields=name%2Cdescription%2Cimages%2Cexternal_urls%2Cfollowers",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -51,7 +51,7 @@ class API
         $playlist->setDescription($playlistRaw->description);
         $playlist->setImageUrl($playlistRaw->images[0]->url);
         $playlist->setName($playlistRaw->name);
-        $playlist->setSpotifyUrl($playlistRaw->uri);
+        $playlist->setSpotifyUrl($playlistRaw->external_urls->spotify);
         $playlist->setPlaylistId($playlistId);
         return $playlist;
     }
