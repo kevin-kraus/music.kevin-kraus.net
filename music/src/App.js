@@ -5,7 +5,8 @@ import Playlist from "./components/Playlist";
 import kkraus from './kkraus_logo.png';
 import Loading from "./components/Loading";
 import Footer from "./components/Footer";
-import config from "./config.json"
+import config from "./config.json";
+import ReactGA from 'react-ga';
 
 function App() {
     const [playlists, setPlaylists] = useState([]);
@@ -13,6 +14,11 @@ function App() {
     const playlistsToFetch = config.SPOTIFY_PLAYLISTS;
 
     useEffect(() => {
+        // Initialize Google Analytics
+        if (process.env.NODE_ENV !== 'development') {
+            ReactGA.initialize(config.GA_TOKEN);
+            ReactGA.pageview(window.location.pathname + window.location.search);
+        }
         async function loadPlaylists() {
                 var playlists = await fetchPlaylistInfo();
                 return playlists;
