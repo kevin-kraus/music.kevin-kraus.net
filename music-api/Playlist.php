@@ -5,6 +5,24 @@ class Playlist {
     public $description;
     public $imageUrl;
     public $spotifyUrl;
+    public $externalUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getExternalUrl()
+    {
+        return $this->externalUrl;
+    }
+
+    /**
+     * @param mixed $externalUrl
+     */
+    public function setExternalUrl($externalUrl)
+    {
+        $this->externalUrl = $externalUrl;
+    }
+
 
     /**
      * @return mixed

@@ -1,7 +1,7 @@
+@import "./helper/theme";
 @import "./helper/Breakpoints";
-
 body {
-  background-color: #282c34;
+  background-color: #282c34 !important;
 }
 
 .App {
@@ -22,11 +22,12 @@ body {
   color: white;
 }
 .headerText {
-  margin: 5px 10px 5px 10px;
+  margin: 5px 10px 40px 10px;
 }
 
 .kkraus {
   width: 35vw;
+  margin: 35px
 }
 
 .App-logo {
