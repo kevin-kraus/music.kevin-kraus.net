@@ -4,10 +4,10 @@ class SpotifyPlaylist {
     description;
     image_url;
     url;
-    constructor(name, description, images, uri) {
+    constructor(name, description, imageUrl, uri) {
         this.name = name;
         this.description = he.decode(description);
-        this.image_url = images[0]["url"];
+        this.image_url = he.decode(imageUrl);
         this.url = uri;
     }
 }

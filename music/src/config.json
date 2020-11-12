@@ -1,7 +1,4 @@
 {
-  "SPOTIFY_CLIENT_ID": "",
-  "SPOTIFY_CLIENT_SECRET": "",
-  "SPOTIFY_PLAYLISTS": [],
-  "SPOTIFY_PROFILE_URL": ""
-
+  "SPOTIFY_PROFILE_URL": "spotify:user:coolo19",
+  "API_URL": "https://music.kevin-kraus.com/api/getPlaylists"
 }
