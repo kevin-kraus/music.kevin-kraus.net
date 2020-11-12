@@ -1,5 +1,4 @@
 import axios from 'axios';
-import * as qs from "querystring";
 import SpotifyPlaylist from "../../model/spotifyPlaylist";
 import config from "../../config.json"
 

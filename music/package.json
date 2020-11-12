@@ -1,17 +1,18 @@
 {
   "name": "music.kevin-kraus.com",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "node": "latest",
+    "node-sass": "^4.14.1",
     "react": "^17.0.1",
+    "react-bootstrap": "latest",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4",
-    "node": "latest",
-    "react-bootstrap": "latest"
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",

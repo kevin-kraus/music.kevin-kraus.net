@@ -1,5 +1,9 @@
 @import "./helper/Breakpoints";
 
+body {
+  background-color: #282c34;
+}
+
 .App {
   text-align: center;
   background-color: #282c34;
@@ -18,7 +22,7 @@
   color: white;
 }
 .headerText {
-  margin-top: 0;
+  margin: 0 10px 0 10px;
 }
 
 .kkraus {
