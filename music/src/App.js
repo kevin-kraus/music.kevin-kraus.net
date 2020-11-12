@@ -20,8 +20,7 @@ function App() {
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
         async function loadPlaylists() {
-                var playlists = await fetchPlaylistInfo();
-                return playlists;
+            return await fetchPlaylistInfo();
             }
         loadPlaylists().then((result)=> { setPlaylists(result)});
     }, [playlistsToFetch]);
