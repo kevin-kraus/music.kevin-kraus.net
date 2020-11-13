@@ -6,6 +6,7 @@ class API
 {
     private $clientId = "";
     private $clientSecret = "";
+    private $baseUrl = "https://api.spotify.com/v1";
     private $playlists = [];
 
 
@@ -26,7 +27,7 @@ class API
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://api.spotify.com/v1/playlists/" . $playlistId . "?fields=name%2Cdescription%2Cimages%2Cexternal_urls%2Curi%2Cfollowers",
+            CURLOPT_URL => $this->baseUrl . "/playlists/" . $playlistId . "?fields=name%2Cdescription%2Cimages%2Cexternal_urls%2Curi%2Cfollowers",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -67,7 +68,7 @@ class API
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://api.spotify.com/v1/playlists/" . $playlist_id . "/tracks?fields=total",
+            CURLOPT_URL => $this->baseUrl . "/playlists/" . $playlist_id . "/tracks?fields=total",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -90,7 +91,7 @@ class API
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://api.spotify.com/v1/playlists/" . $playlist_id . "/tracks?fields=items(added_at)&offset=" . $offset,
+            CURLOPT_URL => $this->baseUrl . "/playlists/" . $playlist_id . "/tracks?fields=items(added_at)&offset=" . $offset,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
