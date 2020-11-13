@@ -22,7 +22,7 @@ body {
   color: white;
 }
 .headerText {
-  margin: 5px 10px 40px 10px;
+  margin: 5px 10px 15px 10px;
 }
 
 .kkraus {
@@ -43,6 +43,11 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.updateNotice {
+  margin-bottom: 15px;
+  font-style: italic;
 }
 
 @keyframes App-logo-spin {
