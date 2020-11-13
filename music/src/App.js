@@ -39,6 +39,7 @@ function App() {
                 </a>
                 <h4 className="headerText">Find my favourite self-created playlists here.<br/>
                     Otherwise <a className="profileLink" href={config.SPOTIFY_PROFILE_URL}>here</a> you can find my Spotify profile.</h4>
+            <h6>Notice: The playlist that was last updated is displayed at the top.</h6>
 
 
                 {playlists.map(playlist => (
