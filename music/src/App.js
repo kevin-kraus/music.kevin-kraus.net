@@ -22,7 +22,11 @@ function App() {
         async function loadPlaylists() {
             return await fetchPlaylistInfo();
             }
-        loadPlaylists().then((result)=> { setPlaylists(result)});
+        loadPlaylists()
+            .then((result)=> {
+                result.sort((a, b) => b.lastAddition - a.lastAddition);
+                setPlaylists(result);
+            });
     }, [playlistsToFetch]);
 
 
