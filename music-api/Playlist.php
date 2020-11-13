@@ -6,6 +6,23 @@ class Playlist {
     public $imageUrl;
     public $spotifyUrl;
     public $externalUrl;
+    public $lastAddition;
+
+    /**
+     * @return mixed
+     */
+    public function getLastAddition()
+    {
+        return $this->lastAddition;
+    }
+
+    /**
+     * @param mixed $lastAddition
+     */
+    public function setLastAddition($lastAddition)
+    {
+        $this->lastAddition = $lastAddition;
+    }
 
     /**
      * @return mixed
@@ -102,10 +119,5 @@ class Playlist {
     public function setSpotifyUrl($spotifyUrl)
     {
         $this->spotifyUrl = $spotifyUrl;
-    }
-
-    public function __toString()
-    {
-        return $this->name . ''. $this->description;
     }
 }
