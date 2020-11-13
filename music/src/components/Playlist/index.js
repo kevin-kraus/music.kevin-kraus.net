@@ -17,7 +17,12 @@ function Playlist(props) {
                     <img className={styles.playlistLogo} src={props.playlist.image_url} alt="playlist_logo"/>
                     <div className={styles.playlistDetails}>
                         <div className={styles.playlistName}>{props.playlist.name}</div>
-                        <div className={styles.playlistDescription}>{props.playlist.description}</div>
+                        <div className={styles.playlistDescription}>
+                            {props.playlist.description}
+                            <div className={styles.playlistLastUpdate}>
+                                (last addition: {props.playlist.lastAddition.format('DD.MM.YYYY HH:mm')})
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -10,8 +10,9 @@ function mapToPlaylist(response) {
     var name = response["name"];
     var spotifyUrl = response["spotifyUrl"];
     var externalUrl = response["externalUrl"];
+    var lastAddition = response["lastAddition"];
 
-    return new SpotifyPlaylist(name, description, images, spotifyUrl, externalUrl);
+    return new SpotifyPlaylist(name, description, images, spotifyUrl, externalUrl, lastAddition);
 }
 
 export async function fetchPlaylistInfo() {

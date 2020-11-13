@@ -7,14 +7,14 @@
   border-right: 1px solid white;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
 .playlistContainer {
   display: grid;
-  grid-template-columns: 40vw 40vw;
-  grid-template-rows: 20vw 20vw;
+  grid-template-columns: 45vw 40vw;
+  grid-template-rows: 25vw 20vw;
   color: white;
   border: 1px solid white;
   border-radius: 10px;
@@ -52,7 +52,12 @@ a{
   grid-row: 2;
   align-self: start;
   font-size: 1rem;
+  line-height: 25px;
   @include breakpoint('xs') {
     font-size: 14px;
   }
+}
+
+.playlistLastUpdate {
+  font-size: 12px;
 }
