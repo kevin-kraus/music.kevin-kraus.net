@@ -4,8 +4,8 @@ require_once("Playlist.php");
 
 class API
 {
-    private $clientId = "#{SPOTIFY_CLIENT_ID}#";
-    private $clientSecret = "#{SPOTIFY_CLIENT_SECRET}#";
+    private $clientId = "${{ secrets.SPOTIFY_CLIENT_ID }}";
+    private $clientSecret = "${{ secrets.SPOTIFY_CLIENT_SECRET }}";
     private $baseUrl = "https://api.spotify.com/v1";
     private $playlists = [
                                  "2gLx9SyUb4yeovTMOs3wQ8",
