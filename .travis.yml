@@ -20,4 +20,4 @@ jobs:
 
     - stage: NPM BUILD
       script:
-        - "npm run build
+        - "npm run build"
