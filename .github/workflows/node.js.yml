@@ -26,12 +26,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run:
-        shell: npm install
+      - run: npm install
         working-directory: music
 
-      - run:
-        shell: npm run build --if-present
+      - run: npm run build --if-present
         working-directory: music
 
       - name: FTP Deploy
