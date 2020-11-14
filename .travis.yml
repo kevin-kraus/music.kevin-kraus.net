@@ -1,22 +1,22 @@
-dist: trusty
-sudo: false
-os: linux
-language: node_js
-node_js:
-  - "10"
+---
 cache: npm
+dist: trusty
 install:
   - "cd music/"
   - "npm install"
-stages:
-  - NPM BUILD
-  - DEPLOY PROD
-
 jobs:
   include:
-    - stage: NPM BUILD
-      script:
+    - script:
         - "npm run build"
-    - stage: DEPLOY PROD
-      script:
-        - "cd build && find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD} \;"
+      stage: "NPM BUILD"
+    - script:
+        - "cd build && find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD ;"
+      stage: "DEPLOY PROD"
+language: node_js
+node_js:
+  - "10"
+os: linux
+stages:
+  - "NPM BUILD"
+  - "DEPLOY PROD"
+sudo: false
