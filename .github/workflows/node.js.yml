@@ -57,14 +57,14 @@ jobs:
           secret-value: ${{ secrets.SPOTIFY_CLIENT_ID  }}
 
       - name: Replace Spotify Client Secret
-          uses: jwsi/secret-parser@v1
-          with:
-            # File where GitHub Actions Secrets references should be parsed and replaced
-            filename: music-api/api.php
-            # Name of secret to search for in the designated file
-            secret-name: "#{SPOTIFY_CLIENT_SECRET}#"
-            # Value of secret to replace reference with in designated file
-            secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
+        uses: jwsi/secret-parser@v1
+        with:
+          # File where GitHub Actions Secrets references should be parsed and replaced
+          filename: music-api/api.php
+          # Name of secret to search for in the designated file
+          secret-name: "#{SPOTIFY_CLIENT_SECRET}#"
+          # Value of secret to replace reference with in designated file
+          secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
 
 
       - name: FTP Deploy API
