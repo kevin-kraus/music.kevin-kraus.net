@@ -10,14 +10,13 @@ install:
   - "npm install"
 stages:
   - NPM BUILD
+  - DEPLOY
 
 jobs:
   include:
     - stage: NPM BUILD
       script:
         - "npm run build"
-
-after_success:
-  - test $TRAVIS_BRANCH = "feature/show-last-update" &&
-    cd build &&
-    find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD} \;
+    - stage: DEPLOY
+      script:
+        - "cd build && find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD} \;"
