@@ -18,4 +18,4 @@ jobs:
         - "npm run build"
     - stage: DEPLOY
       script:
-        - cd build && find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD} \;
+        - npm run build && cd build && find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD} \;
