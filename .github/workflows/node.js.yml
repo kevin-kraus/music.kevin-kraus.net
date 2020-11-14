@@ -32,19 +32,14 @@ jobs:
       - run: npm run build --if-present
         working-directory: music
 
-      - name: FTP Deploy Frontend
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - name: FTP Deployment Frontend
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          # ftp server
           server: ${{ secrets.FTP_URL }}
-          # ftp username
-          username: ${{ secrets.FTP_USERNAME }}
-          # ftp password
+          user:  ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Folder to upload from, must end with trailing slash /
-          local-dir: music/build/
-          # Deletes ALL contents of server-dir, even items in excluded with exclude argument
-          dangerous-clean-slate: true
+          local_dir: music/build/
+          delete: true
 
       - name: Replace Spotify Client ID
         uses: jwsi/secret-parser@v1
@@ -66,16 +61,11 @@ jobs:
           # Value of secret to replace reference with in designated file
           secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
 
-
-      - name: FTP Deploy API
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - name: FTP Deployment API
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          # ftp server
           server: ${{ secrets.FTP_URL }}
-          # ftp username
-          username: ${{ secrets.FTP_USERNAME }}
-          # ftp password
+          user:  ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Folder to upload from, must end with trailing slash /
-          local-dir: music-api/
-          exclude: '*'
+          local_dir: music-api/
+          delete: false
