@@ -46,12 +46,30 @@ jobs:
           # Deletes ALL contents of server-dir, even items in excluded with exclude argument
           dangerous-clean-slate: true
 
-      - name: Replace tokens in API.PHP
+      - name: Replace Spotify Client ID
         # You may pin to the exact commit or the version.
-        # uses: cschleiden/replace-tokens@121d9153eda2951d490e9f724a67ff095ab4c4f7
-        uses: cschleiden/replace-tokens@v1.0
+        # uses: jwsi/secret-parser@2c174fe999761cebeb83f6c6d79dfc938e3e473e
+        uses: jwsi/secret-parser@v1
         with:
-          files: music-api/api.php
+          # File where GitHub Actions Secrets references should be parsed and replaced
+          filename: music-api/api.php
+          # Name of secret to search for in the designated file
+          secret-name: "#{SPOTIFY_CLIENT_ID}#"
+          # Value of secret to replace reference with in designated file
+          secret-value: ${{ secrets.SPOTIFY_CLIENT_ID  }}
+
+      - name: Replace Spotify Client Secret
+          # You may pin to the exact commit or the version.
+          # uses: jwsi/secret-parser@2c174fe999761cebeb83f6c6d79dfc938e3e473e
+          uses: jwsi/secret-parser@v1
+          with:
+            # File where GitHub Actions Secrets references should be parsed and replaced
+            filename: music-api/api.php
+            # Name of secret to search for in the designated file
+            secret-name: "#{SPOTIFY_CLIENT_SECRET}#"
+            # Value of secret to replace reference with in designated file
+            secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
+
 
       - name: FTP Deploy API
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
