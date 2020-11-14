@@ -54,15 +54,15 @@ jobs:
           files: music-api/api.php
 
       - name: FTP Deploy API
-          uses: SamKirkland/FTP-Deploy-Action@4.0.0
-          with:
-            # ftp server
-            server: ${{ secrets.FTP_URL }}
-            # ftp username
-            username: ${{ secrets.FTP_USERNAME }}
-            # ftp password
-            password: ${{ secrets.FTP_PASSWORD }}
-            # Folder to upload from, must end with trailing slash /
-            local-dir: music-api
-            # Deletes ALL contents of server-dir, even items in excluded with exclude argument
-            dangerous-clean-slate: true
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          # ftp server
+          server: ${{ secrets.FTP_URL }}
+          # ftp username
+          username: ${{ secrets.FTP_USERNAME }}
+          # ftp password
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Folder to upload from, must end with trailing slash /
+          local-dir: music-api
+          # Deletes ALL contents of server-dir, even items in excluded with exclude argument
+          dangerous-clean-slate: true
