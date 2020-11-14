@@ -17,6 +17,6 @@ jobs:
     - stage: NPM BUILD
       script:
         - "npm run build"
-    - stage: DEPLOY
+    - stage: DEPLOY PROD
       script:
         - "cd build && find . -type f -exec curl --ftp-create-dirs -T {} ${SFTP_URL}{} --user ${SFTP_USER}:${SFTP_PASSWORD} \;"
