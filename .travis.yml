@@ -9,15 +9,10 @@ install:
   - "cd music/"
   - "npm install"
 stages:
-  # - NPM TEST
   - NPM BUILD
 
 jobs:
   include:
-    - stage: NPM TEST
-      script:
-        - "npm run test"
-
     - stage: NPM BUILD
       script:
         - "npm run build"
