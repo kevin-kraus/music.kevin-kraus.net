@@ -5,20 +5,29 @@
   width: 100%;
   border-radius: 10px 0 0 10px;
   border-right: 1px solid white;
+  @include breakpoint('xs') {
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid white;
+  }
 }
 
-a{
+a {
   text-decoration: none;
 }
 
 .playlistContainer {
   display: grid;
-  grid-template-columns: 40vw 40vw;
-  grid-template-rows: 20vw 20vw;
+  grid-template-columns: 45vw 40vw;
+  grid-template-rows: 25vw 20vw;
   color: white;
   border: 1px solid white;
   border-radius: 10px;
   margin-bottom: 20px;
+
+  @include breakpoint('xs') {
+    grid-template-columns: 80vw;
+    grid-template-rows: 80vw auto;
+  }
 }
 
 .playlistDetails {
@@ -31,6 +40,13 @@ a{
   word-break: keep-all;
   line-height: 1;
   margin-right: 15px;
+
+  @include breakpoint('xs') {
+    grid-row: 2;
+    grid-column: 1;
+    align-content: start;
+    grid-template-rows: 10vw auto;
+  }
 
 }
 
@@ -49,10 +65,19 @@ a{
 }
 
 .playlistDescription {
+  font-style: italic;
   grid-row: 2;
   align-self: start;
   font-size: 1rem;
+  line-height: 25px;
   @include breakpoint('xs') {
+    margin-top: 5px;
+    padding-bottom: 10px;
     font-size: 14px;
   }
+}
+
+.playlistLastUpdate {
+  font-style: normal;
+  font-size: 12px;
 }

@@ -1,8 +1,12 @@
 import React from 'react'
-import CircleLoader from 'react-spinners/CircleLoader'
+import styles from './Loading.module.scss'
+import spinner from './spinning-circles.svg'
 function Loading() {
     return(
-        <CircleLoader color="#BC359B"/>
+        <div className={styles.loadingContainer}>
+            <img src={spinner} className={styles.loadingSpinner} alt="Loading"/>
+        <h6 className={styles.text}>Loading Playlists...</h6>
+        </div>
     )
 
 }

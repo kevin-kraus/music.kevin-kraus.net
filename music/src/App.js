@@ -22,7 +22,11 @@ function App() {
         async function loadPlaylists() {
             return await fetchPlaylistInfo();
             }
-        loadPlaylists().then((result)=> { setPlaylists(result)});
+        loadPlaylists()
+            .then((result)=> {
+                result.sort((a, b) => b.lastAddition - a.lastAddition);
+                setPlaylists(result);
+            });
     }, [playlistsToFetch]);
 
 
@@ -35,6 +39,9 @@ function App() {
                 </a>
                 <h4 className="headerText">Find my favourite self-created playlists here.<br/>
                     Otherwise <a className="profileLink" href={config.SPOTIFY_PROFILE_URL}>here</a> you can find my Spotify profile.</h4>
+            {playlists.length !== 0 &&
+            <h6 className="updateNotice">Notice: The playlist that was last updated is displayed at the top.</h6>
+            }
 
 
                 {playlists.map(playlist => (
