@@ -4,10 +4,17 @@ require_once("Playlist.php");
 
 class API
 {
-    private $clientId = "";
-    private $clientSecret = "";
+    private $clientId = "#{SPOTIFY_CLIENT_ID}#";
+    private $clientSecret = "#{SPOTIFY_CLIENT_SECRET}#";
     private $baseUrl = "https://api.spotify.com/v1";
-    private $playlists = [];
+    private $playlists = [
+                                 "2gLx9SyUb4yeovTMOs3wQ8",
+                                 "4mkKcM3iQF2eSMPyuAQ8AT",
+                                 "0UdF4EwkUDueagEjIgoaRe",
+                                 "3L7tN4hTe3C7IlseDVSOuA",
+                                 "0tqmzFROrtDBtpdB6EKyd8",
+                                 "32MbUaD4VMAMfNvXdisnIC",
+                                 "6fpG9WRdgBryApAVsLyb6I"];
 
 
     public function getAllPlaylists(): array

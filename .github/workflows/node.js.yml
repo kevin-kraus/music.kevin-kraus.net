@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [10.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -32,7 +32,7 @@ jobs:
       - run: npm run build --if-present
         working-directory: music
 
-      - name: FTP Deploy
+      - name: FTP Deploy Frontend
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           # ftp server
@@ -43,3 +43,26 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Folder to upload from, must end with trailing slash /
           local-dir: music/build/
+          # Deletes ALL contents of server-dir, even items in excluded with exclude argument
+          dangerous-clean-slate: true
+
+      - name: Replace tokens in API.PHP
+        # You may pin to the exact commit or the version.
+        # uses: cschleiden/replace-tokens@121d9153eda2951d490e9f724a67ff095ab4c4f7
+        uses: cschleiden/replace-tokens@v1.0
+        with:
+          files: music-api/api.php
+
+      - name: FTP Deploy API
+          uses: SamKirkland/FTP-Deploy-Action@4.0.0
+          with:
+            # ftp server
+            server: ${{ secrets.FTP_URL }}
+            # ftp username
+            username: ${{ secrets.FTP_USERNAME }}
+            # ftp password
+            password: ${{ secrets.FTP_PASSWORD }}
+            # Folder to upload from, must end with trailing slash /
+            local-dir: music-api
+            # Deletes ALL contents of server-dir, even items in excluded with exclude argument
+            dangerous-clean-slate: true
