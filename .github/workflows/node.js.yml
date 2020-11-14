@@ -47,8 +47,6 @@ jobs:
           dangerous-clean-slate: true
 
       - name: Replace Spotify Client ID
-        # You may pin to the exact commit or the version.
-        # uses: jwsi/secret-parser@2c174fe999761cebeb83f6c6d79dfc938e3e473e
         uses: jwsi/secret-parser@v1
         with:
           # File where GitHub Actions Secrets references should be parsed and replaced
@@ -59,8 +57,6 @@ jobs:
           secret-value: ${{ secrets.SPOTIFY_CLIENT_ID  }}
 
       - name: Replace Spotify Client Secret
-          # You may pin to the exact commit or the version.
-          # uses: jwsi/secret-parser@2c174fe999761cebeb83f6c6d79dfc938e3e473e
           uses: jwsi/secret-parser@v1
           with:
             # File where GitHub Actions Secrets references should be parsed and replaced
