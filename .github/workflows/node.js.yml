@@ -63,6 +63,6 @@ jobs:
           # ftp password
           password: ${{ secrets.FTP_PASSWORD }}
           # Folder to upload from, must end with trailing slash /
-          local-dir: music-api
+          local-dir: music-api/
           # Deletes ALL contents of server-dir, even items in excluded with exclude argument
           dangerous-clean-slate: true
