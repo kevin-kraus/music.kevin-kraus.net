@@ -78,4 +78,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Folder to upload from, must end with trailing slash /
           local-dir: music-api/
-          exclude: *
+          exclude: '*'
