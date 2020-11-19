@@ -14,7 +14,7 @@ to have, please also create an issue for it.
 
 ## Launching locally for development
 - Make sure that you have registered an app in Spotify Developer Portal and added the Client ID and Secret into the 
-`music-api/api.php file.
+`music-api/api.php` file.
 - remove `music.kevin-kraus.com` CORS-Header in `music-api/api.php`
 - start api server locally
 - replace api url in `music/config.json`
