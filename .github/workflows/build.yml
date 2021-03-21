@@ -55,7 +55,6 @@ jobs:
     strategy:
       matrix:
         node-version: [ 10.x ]
-    needs: update-version
     steps:
       - uses: actions/checkout@v2
 
