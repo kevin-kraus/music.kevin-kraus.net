@@ -19,6 +19,8 @@ jobs:
 
       - name: Git Version
         uses: codacy/git-version@2.2.0
+        with:
+          log-path: music/build/version.txt
 
 
   build:
