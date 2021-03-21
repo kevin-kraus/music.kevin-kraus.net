@@ -34,6 +34,15 @@ jobs:
           # Files to be replaced(regex)
           include: music/package.json
 
+      - name: Commit & push new version
+        uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+        #if: github.ref == 'refs/heads/master'
+        with:
+          add: 'music/package.json'
+          message: 'Bump version to: ${{ steps.get-version.outputs.version }}'
+          push: true
+          signoff: true
+          tag: 'v${{ steps.get-version.outputs.version }}'
 
   build:
     runs-on: ubuntu-latest
@@ -59,8 +68,6 @@ jobs:
           name: frontend
           path: |
             music/build
-
-
 
 
   deploy:
