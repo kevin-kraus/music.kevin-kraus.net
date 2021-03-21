@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Git Version
+        id: get-version
         uses: codacy/git-version@2.2.0
 
       - name: File Regex Replace
