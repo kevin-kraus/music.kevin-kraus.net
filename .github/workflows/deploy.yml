@@ -44,7 +44,14 @@ jobs:
           signoff: true
           tag: 'v${{ steps.get-version.outputs.version }}'
 
+        - name: Archive version artifacts
+            uses: actions/upload-artifact@v2
+            with:
+              name: versioned-frontend
+              path: ./music
+
   build:
+    name: Build Frontend
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -52,14 +59,24 @@ jobs:
     needs: update-version
     steps:
       - uses: actions/checkout@v2
+
+      - name: Download production artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: versioned-frontend
+          path: music
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+
+      - name: Install NPM Dependencies
+        run: npm install
         working-directory: music
 
-      - run: npm run build --if-present
+      - name: Build production Artifact
+        run: npm run build --if-present
         working-directory: music
 
       - name: Archive production artifacts
