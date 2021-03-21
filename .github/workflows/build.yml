@@ -11,7 +11,6 @@ jobs:
   update-version:
     name: Update Version
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -55,6 +54,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 10.x ]
+    needs: update-version
     steps:
       - uses: actions/checkout@v2
 
