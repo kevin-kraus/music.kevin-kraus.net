@@ -5,6 +5,22 @@ on:
     branches:
       - feature/auto-version-bump
 jobs:
+
+  update-version:
+    name: Update Version
+    runs-on: ubuntu-latest
+    #if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Git Version
+        uses: codacy/git-version@2.2.0
+
+
   build:
     runs-on: ubuntu-latest
     strategy:
@@ -31,26 +47,12 @@ jobs:
             music/build
 
 
-  update-version:
-    name: Update Version
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/master'
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
-
-      - name: Git Version
-        uses: codacy/git-version@2.2.0
 
 
   deploy:
     name: Deploy Frontend and API to Production
     runs-on: ubuntu-latest
-    needs: build
+    needs: update-version
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repo
