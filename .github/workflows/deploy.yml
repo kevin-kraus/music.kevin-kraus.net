@@ -1,8 +1,36 @@
+name: Deploy
+
 on:
   push:
     branches:
       - feature/auto-version-bump
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 10.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+        working-directory: music
+
+      - run: npm run build --if-present
+        working-directory: music
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: frontend
+          path: |
+            music/build
+
+
   update-version:
     name: Update Version
     runs-on: ubuntu-latest
@@ -20,54 +48,54 @@ jobs:
 
 
   deploy:
-      name: Deploy Frontend and API to Production
-      runs-on: ubuntu-latest
-      needs: build
-      if: github.ref == 'refs/heads/master'
-      steps:
-        - name: Checkout repo
-          uses: actions/checkout@v2
+    name: Deploy Frontend and API to Production
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-        - name: Download production artifact
-          uses: actions/download-artifact@v2
-          with:
-            name: frontend
-            path: music/build
+      - name: Download production artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: frontend
+          path: music/build
 
-        - name: Replace Spotify Client ID
-          uses: jwsi/secret-parser@v1
-          with:
-            # File where GitHub Actions Secrets references should be parsed and replaced
-            filename: music-api/api.php
-            # Name of secret to search for in the designated file
-            secret-name: "SPOTIFY_CLIENT_ID"
-            # Value of secret to replace reference with in designated file
-            secret-value: ${{ secrets.SPOTIFY_CLIENT_ID  }}
+      - name: Replace Spotify Client ID
+        uses: jwsi/secret-parser@v1
+        with:
+          # File where GitHub Actions Secrets references should be parsed and replaced
+          filename: music-api/api.php
+          # Name of secret to search for in the designated file
+          secret-name: "SPOTIFY_CLIENT_ID"
+          # Value of secret to replace reference with in designated file
+          secret-value: ${{ secrets.SPOTIFY_CLIENT_ID  }}
 
-        - name: Replace Spotify Client Secret
-          uses: jwsi/secret-parser@v1
-          with:
-            # File where GitHub Actions Secrets references should be parsed and replaced
-            filename: music-api/api.php
-            # Name of secret to search for in the designated file
-            secret-name: "SPOTIFY_CLIENT_SECRET"
-            # Value of secret to replace reference with in designated file
-            secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
+      - name: Replace Spotify Client Secret
+        uses: jwsi/secret-parser@v1
+        with:
+          # File where GitHub Actions Secrets references should be parsed and replaced
+          filename: music-api/api.php
+          # Name of secret to search for in the designated file
+          secret-name: "SPOTIFY_CLIENT_SECRET"
+          # Value of secret to replace reference with in designated file
+          secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
 
-        - name: FTP Deployment Frontend
-          uses: airvzxf/ftp-deployment-action@latest
-          with:
-            server: ${{ secrets.FTP_URL }}
-            user: ${{ secrets.FTP_USERNAME }}
-            password: ${{ secrets.FTP_PASSWORD }}
-            local_dir: music/build/
-            delete: true
+      - name: FTP Deployment Frontend
+        uses: airvzxf/ftp-deployment-action@latest
+        with:
+          server: ${{ secrets.FTP_URL }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: music/build/
+          delete: true
 
-        - name: FTP Deployment API
-          uses: airvzxf/ftp-deployment-action@latest
-          with:
-            server: ${{ secrets.FTP_URL }}
-            user: ${{ secrets.FTP_USERNAME }}
-            password: ${{ secrets.FTP_PASSWORD }}
-            local_dir: music-api/
-            delete: false
+      - name: FTP Deployment API
+        uses: airvzxf/ftp-deployment-action@latest
+        with:
+          server: ${{ secrets.FTP_URL }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: music-api/
+          delete: false
