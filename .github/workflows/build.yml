@@ -24,11 +24,15 @@ jobs:
         with:
           prefix: v
 
-      - uses: cschleiden/replace-tokens@v1
+      - name: Replace Version in package.json
+        uses: mingjun97/file-regex-replace@v1
         with:
-          files: '["**/music/package.json"]'
-        env:
-          FRONTEND_VERSION: ${{ steps.get-version.outputs.version }}
+          # regex to apply(regex)
+          regex: "/(?:\"version\": \"\d\.\d\.\d\")/gm"
+          # replacement string
+          replacement: "\"version\": \"${{ steps.get-version.outputs.version }}\""
+          # Files to be replaced(regex)
+          include: music/package.json
 
       - name: Commit & push new version
         uses: EndBug/add-and-commit@v7
