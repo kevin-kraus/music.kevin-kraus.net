@@ -25,10 +25,13 @@ jobs:
       - name: Replace Version in package.json
         uses: mingjun97/file-regex-replace@v1
         with:
-          # regex to apply(regex)
-          regex: '^  "version": ".*",$'
-          # replacement string
-          replacement: '  "version": "${{ steps.get-version.outputs.version }}",'
+          regex: '"version": "([0-9\.]*)",'
+          replacement: '"version": "${{ steps.get-version.outputs.version }}"'
+          flags: "g"
+          include: 'package\.json'
+          exclude: '.^'
+          encoding: 'utf8'
+          path: './music'
 
 
       - name: Echo current state of package.json
