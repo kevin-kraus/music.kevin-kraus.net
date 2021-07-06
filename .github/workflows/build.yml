@@ -72,11 +72,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install NPM Dependencies
-        run: npm install
+        run: yarn
         working-directory: music
 
       - name: Build production Artifact
-        run: npm run build --if-present
+        run: yarn build --if-present
         working-directory: music
 
       - name: Archive production artifacts
