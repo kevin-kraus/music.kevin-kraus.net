@@ -30,6 +30,10 @@ jobs:
           # replacement string
           replacement: '  "version": "${{ steps.get-version.outputs.version }}",'
 
+
+      - name: Echo current state of package.json
+        run: cat music/package.json
+
       - name: Commit & push new version
         uses: EndBug/add-and-commit@v7
         with:
