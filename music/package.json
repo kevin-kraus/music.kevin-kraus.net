@@ -10,7 +10,7 @@
     "bootstrap": "^4.5.3",
     "moment": "^2.29.1",
     "node": "latest",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "react": "^17.0.1",
     "react-bootstrap": "latest",
     "react-dom": "^17.0.1",
