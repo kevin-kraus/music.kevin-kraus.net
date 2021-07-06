@@ -1,6 +1,6 @@
 {
   "name": "music.kevin-kraus.com",
-  "version": "#{FRONTEND_VERSION}#",
+  "version": "v2.1.0-fixdeploymentissue.0.07dc4cf",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
