@@ -11,7 +11,6 @@ jobs:
   update-version:
     name: Update Version
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -35,11 +34,9 @@ jobs:
           path: './music'
 
 
-      - name: Echo current state of package.json
-        run: cat music/package.json
-
       - name: Commit & push new version
         uses: EndBug/add-and-commit@v7
+        if: github.ref == 'refs/heads/master'
         with:
           add: 'music/package.json'
           message: 'Bump version to: ${{ steps.get-version.outputs.version }}'
