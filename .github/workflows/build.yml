@@ -26,9 +26,9 @@ jobs:
         uses: mingjun97/file-regex-replace@v1
         with:
           # regex to apply(regex)
-          regex: '/\"version\": ".*"/gm'
+          regex: '^  \"version\": ".*",$'
           # replacement string
-          replacement: "\"version\": \"${{ steps.get-version.outputs.version }}\""
+          replacement: '"version": "${{ steps.get-version.outputs.version }}",'
           # Files to be replaced(regex)
           include: music/package.json
 
