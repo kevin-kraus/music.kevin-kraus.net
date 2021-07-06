@@ -24,17 +24,11 @@ jobs:
         with:
           prefix: v
 
-      - name: File Regex Replace
-        # You may pin to the exact commit or the version.
-        # uses: mingjun97/file-regex-replace@7d8ae0144cd6660fe8ca5a938ae71ea816a06f47
-        uses: mingjun97/file-regex-replace@v1
+      - uses: cschleiden/replace-tokens@v1
         with:
-          # regex to apply(regex)
-          regex: "(?:\"version\": )(\"\\d.\\d.\\d\")"
-          # replacement string
-          replacement: "\"version\": \"${{ steps.get-version.outputs.version }}\""
-          # Files to be replaced(regex)
-          include: music/package.json
+          files: '["**/music/package.json"]'
+        env:
+          FRONTEND_VERSION: ${{ steps.get-version.outputs.version }}
 
       - name: Commit & push new version
         uses: EndBug/add-and-commit@v7
