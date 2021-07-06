@@ -40,6 +40,7 @@ jobs:
         with:
           add: 'music/package.json'
           message: 'Bump version to: ${{ steps.get-version.outputs.version }}'
+          branch: master
           push: true
           signoff: true
           tag: 'v${{ steps.get-version.outputs.version }}'
