@@ -1,6 +1,6 @@
 {
   "name": "music.kevin-kraus.com",
-  "version": "0.1.0-featureautoversionbump.0.d881333",
+  "version": "#{FRONTEND_VERSION}#",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
