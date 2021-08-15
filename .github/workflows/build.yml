@@ -22,6 +22,11 @@ jobs:
       - name: Git Version
         id: get-version
         uses: codacy/git-version@2.2.0
+        with:
+          release-branch: master
+          dev-branch: develop
+          minor-identifier: feature
+
 
       - name: Replace Version in package.json
         uses: mingjun97/file-regex-replace@v1
