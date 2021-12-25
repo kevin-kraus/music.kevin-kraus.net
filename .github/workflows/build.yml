@@ -88,8 +88,6 @@ jobs:
           path: |
             music/build
 
-
-
   deploy-frontend:
     name: Deploy Frontend to Production
     runs-on: ubuntu-latest
@@ -127,7 +125,7 @@ jobs:
         uses: jwsi/secret-parser@v1
         with:
           # File where GitHub Actions Secrets references should be parsed and replaced
-          filename: music-api/api.php
+          filename: music-api/function/spotifyService.js
           # Name of secret to search for in the designated file
           secret-name: "SPOTIFY_CLIENT_ID"
           # Value of secret to replace reference with in designated file
@@ -137,18 +135,24 @@ jobs:
         uses: jwsi/secret-parser@v1
         with:
           # File where GitHub Actions Secrets references should be parsed and replaced
-          filename: music-api/api.php
+          filename: music-api/function/spotifyService.js
           # Name of secret to search for in the designated file
           secret-name: "SPOTIFY_CLIENT_SECRET"
           # Value of secret to replace reference with in designated file
           secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
 
-      - name: FTP Deployment API
-        uses: airvzxf/ftp-deployment-action@latest
-        with:
-          server: ${{ secrets.FTP_URL }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: music-api/
-          delete: false
+      - name: Change to Function directory
+        run: cd music-api/function
+
+      - name: Install dependencies
+        run: yarn
+      
+      - name: Build production Artifact
+        run: yarn build
+
+      - name: Create ZIP
+        run: zip -j music-api.zip ./build/index.js
+      
+      - name: Upload ZIP to AWS Lambda
+        run: aws lambda update-function-code --function-name get-spotify-playlists --zip-file fileb://music-api.zip --region eu-central-1
 

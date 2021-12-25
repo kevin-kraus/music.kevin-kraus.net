@@ -9,8 +9,6 @@ const playlistIds = [
                                  "32MbUaD4VMAMfNvXdisnIC",
                                  "6fpG9WRdgBryApAVsLyb6I"
                             ];
-                        
-
 const handler = async (event) => {
     // TODO implement
     const accessToken = await getAuthToken();
