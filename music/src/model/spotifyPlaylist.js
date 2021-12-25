@@ -1,5 +1,4 @@
 import he from 'he';
-import moment from 'moment'
 class SpotifyPlaylist {
     name;
     description;
@@ -13,7 +12,7 @@ class SpotifyPlaylist {
         this.image_url = he.decode(imageUrl);
         this.spotifyUrl = spotifyUrl;
         this.externalUrl = externalUrl;
-        this.lastAddition = moment(lastAddition);
+        this.lastAddition = new Date(lastAddition.added_at)
     }
 
 

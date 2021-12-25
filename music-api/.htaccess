@@ -1,4 +1,0 @@
-RewriteEngine On
-Redirect /gh https://music.kevin-kraus.com/?utm_source=github&utm_medium=repository&utm_campaign=repo_link
-Redirect /ig https://music.kevin-kraus.com/?utm_source=instagram&utm_medium=profile&utm_campaign=instagramprofilelink
-RewriteRule ^/api/ api.php

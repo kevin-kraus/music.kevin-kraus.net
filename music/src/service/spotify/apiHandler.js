@@ -18,14 +18,13 @@ function mapToPlaylist(response) {
 export async function fetchPlaylistInfo() {
     var apiUrl = config.API_URL;
     var fetchedPlaylists = [];
-    await axios.get(apiUrl)
-        .then(res => {
-            var playlists = res["data"];
-            for(var playlist of playlists) {
-                var play = mapToPlaylist(playlist);
-                fetchedPlaylists.push(play);
-            }
-        });
+    let response = await axios.get(apiUrl)
+
+    for(var playlist of response.data) {
+        var play = mapToPlaylist(playlist);
+        fetchedPlaylists.push(play);
+    }
+
     return fetchedPlaylists;
     }
 
