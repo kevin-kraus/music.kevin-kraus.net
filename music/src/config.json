@@ -1,6 +1,6 @@
 {
   "SPOTIFY_PROFILE_URL": "spotify:user:coolo19",
-  "API_URL": "https://music.kevin-kraus.com/api/getPlaylists",
+  "API_URL": "https://fnyljkicsa.execute-api.eu-central-1.amazonaws.com/get-spotify-playlists",
   "GA_TOKEN": "UA-114295354-6"
 
 }
