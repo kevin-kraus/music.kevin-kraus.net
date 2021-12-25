@@ -141,19 +141,20 @@ jobs:
           # Value of secret to replace reference with in designated file
           secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
 
-      - name: Change to Function directory
-        run: cd music-api/function
-
       - name: Install dependencies
+        working-directory: music-api/function
         run: yarn
       
       - name: Build production Artifact
+        working-directory: music-api/function
         run: yarn build
 
       - name: Create ZIP
+        working-directory: music-api/function
         run: zip -j music-api.zip ./build/index.js
       
       - name: Upload ZIP to AWS Lambda
+        working-directory: music-api/function
         env: 
           AWS_SECRET_ACCESS_KEY: "{{ secrets.AWS_SECRET_ACCESS_KEY }}"
           AWS_ACCESS_KEY_ID: "{{ secrets.AWS_ACCESS_KEY_ID }}"
