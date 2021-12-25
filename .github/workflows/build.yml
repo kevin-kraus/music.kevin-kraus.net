@@ -154,9 +154,5 @@ jobs:
         run: zip -j music-api.zip ./build/index.js
       
       - name: Upload ZIP to AWS Lambda
-        env: 
-          AWS_SECRET_ACCESS_KEY: {{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_ACCESS_KEY_ID: {{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_REGION: eu-central-1
         run: aws lambda update-function-code --function-name get-spotify-playlists --zip-file fileb://music-api.zip
 
