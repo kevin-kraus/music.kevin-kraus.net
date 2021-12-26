@@ -1,4 +1,4 @@
-# music.kevin-kraus.com
+# [music.kevin-kraus.net](https://music.kevin-kraus.net)
 Website to easily share my Spotify playlists.
 
 ![Node.js CI](https://github.com/kevin-kraus/music.kevin-kraus.com/workflows/Node.js%20CI/badge.svg?branch=master)
