@@ -14,12 +14,6 @@ function App() {
     const playlistsToFetch = config.SPOTIFY_PLAYLISTS;
 
     useEffect(() => {
-        // Initialize Google Analytics
-        if (process.env.NODE_ENV !== 'development') {
-            ReactGA.initialize(config.GA_TOKEN);
-            ReactGA.pageview(window.location.pathname + window.location.search);
-        }
-
         async function loadPlaylists() {
             return await fetchPlaylistInfo();
         }
@@ -30,6 +24,12 @@ function App() {
                 setPlaylists(result);
             });
     }, [playlistsToFetch]);
+
+    useEffect(() => {
+        // Initialize Google Analytics
+          ReactGA.initialize(config.GA_TOKEN);
+          ReactGA.pageview(window.location.pathname + window.location.search);
+      }, []);
 
 
     return (

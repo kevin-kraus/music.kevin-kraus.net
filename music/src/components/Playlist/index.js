@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Playlist.module.scss'
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import ReactGA from 'react-ga';
 import { OpenPlaylistDialog } from '../OpenPlaylistDialog';
 
@@ -9,30 +7,29 @@ function Playlist(props) {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleClose = () => {
-        console.log("Close handler")
         setIsDialogOpen(false);
-        /*ReactGA.event({
+        ReactGA.event({
             category: 'User',
             action: 'Closed Modal without opening Playlist.'
-        });*/
+        });
     };
 
     const handleCloseWithClick = (external) => {
         setIsDialogOpen(false);
-        /*ReactGA.event({
+        ReactGA.event({
             category: 'User',
             action: 'Opened Playlist',
             label: external ? 'Browser' : 'App'
-        })*/
+        })
     };
 
     const handleClick = () => {
         setIsDialogOpen(true);
-        /*ReactGA.event({
+        ReactGA.event({
             category: 'User',
             action: 'Clicked on Playlist',
             label: props.playlist.name
-        });*/
+        });
     };
 
 
