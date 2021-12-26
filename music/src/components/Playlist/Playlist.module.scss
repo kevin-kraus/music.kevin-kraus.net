@@ -27,6 +27,10 @@ a {
   margin-bottom: 20px;
   grid-template-rows: auto auto;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   // TODO: Fix Layout
   @include breakpoint('m') {
     grid-template-columns: 20% auto;
