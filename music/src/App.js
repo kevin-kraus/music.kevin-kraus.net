@@ -19,11 +19,13 @@ function App() {
             ReactGA.initialize(config.GA_TOKEN);
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
+
         async function loadPlaylists() {
             return await fetchPlaylistInfo();
-            }
+        }
+
         loadPlaylists()
-            .then((result)=> {
+            .then((result) => {
                 result.sort((a, b) => b.lastAddition - a.lastAddition);
                 setPlaylists(result);
             });
@@ -32,25 +34,27 @@ function App() {
 
     return (
         <div className="App">
-                <a href="https://kevin-kraus.com">
-                    <h1>
-                        <img alt={"Kevin Kraus"} className="kkraus" src={kkraus}/>
-                    </h1>
-                </a>
-                <h4 className="headerText">Find my favourite self-created playlists here.<br/>
-                    Otherwise <a className="profileLink" href={config.SPOTIFY_PROFILE_URL}>here</a> you can find my Spotify profile.</h4>
+            <a href="https://kevin-kraus.com">
+                <h1>
+                    <img alt={"Kevin Kraus"} className="kkraus" src={kkraus}/>
+                </h1>
+            </a>
+            <h4 className="headerText">Find my favourite self-created playlists here.<br/>
+                Otherwise <a className="profileLink" href={config.SPOTIFY_PROFILE_URL}>here</a> you can find my Spotify
+                profile.</h4>
             {playlists.length !== 0 &&
-            <h6 className="updateNotice">Notice: The playlist that was last updated is displayed at the top.</h6>
+                <h6 className="updateNotice">Notice: The playlist that was last updated is displayed at the top.</h6>
             }
-
-
+            <div className="playlistContainer">
                 {playlists.map(playlist => (
                     <Playlist playlist={playlist}/>
                 ))
                 }
-                {playlists.length === 0 &&
+            </div>
+
+            {playlists.length === 0 &&
                 <Loading/>
-                }
+            }
             <Footer/>
         </div>
     );

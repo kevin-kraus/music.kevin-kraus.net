@@ -35,7 +35,6 @@ function Playlist(props) {
 
 
     return (
-        <>
             <div onClick={handleShow}>
                 <div className={styles.playlistContainer}>
                     <img className={styles.playlistLogo} src={props.playlist.image_url} alt="playlist_logo" />
@@ -45,29 +44,29 @@ function Playlist(props) {
                             {props.playlist.description}
                             <div className={styles.playlistLastUpdate}>
                                 (last addition: {props.playlist.lastAddition.toLocaleDateString(
-                                    'de-de'
-                                )})
+                                'de-de'
+                            )})
                             </div>
                         </div>
                     </div>
                 </div>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Open Playlist "{props.playlist.name}"</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Please choose whether you have Spotify installed or not.</Modal.Body>
+                    <Modal.Footer>
+                        <Button href={props.playlist.externalUrl} variant="secondary"
+                                onClick={() => handleCloseWithClick(true)}>
+                            Open in Browser
+                        </Button>
+                        <Button href={props.playlist.spotifyUrl} variant="primary"
+                                onClick={() => handleCloseWithClick(false)}>
+                            Open in Spotify
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Open Playlist "{props.playlist.name}"</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Please choose whether you have Spotify installed or not.</Modal.Body>
-                <Modal.Footer>
-                    <Button href={props.playlist.externalUrl} variant="secondary" onClick={() => handleCloseWithClick(true)}>
-                        Open in Browser
-                    </Button>
-                    <Button href={props.playlist.spotifyUrl} variant="primary" onClick={() => handleCloseWithClick(false)}>
-                        Open in Spotify
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
     )
 }
 
