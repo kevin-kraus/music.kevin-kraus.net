@@ -3,39 +3,42 @@ import styles from './Playlist.module.scss'
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReactGA from 'react-ga';
+import { OpenPlaylistDialog } from '../OpenPlaylistDialog';
 
 function Playlist(props) {
-    const [show, setShow] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const handleClose = () => {
-        setShow(false);
-        ReactGA.event({
+        console.log("Close handler")
+        setIsDialogOpen(false);
+        /*ReactGA.event({
             category: 'User',
             action: 'Closed Modal without opening Playlist.'
-        });
+        });*/
     };
 
     const handleCloseWithClick = (external) => {
-        setShow(false);
-        ReactGA.event({
+        setIsDialogOpen(false);
+        /*ReactGA.event({
             category: 'User',
             action: 'Opened Playlist',
             label: external ? 'Browser' : 'App'
-        })
+        })*/
     };
 
-    const handleShow = () => {
-        setShow(true);
-        ReactGA.event({
+    const handleClick = () => {
+        setIsDialogOpen(true);
+        /*ReactGA.event({
             category: 'User',
             action: 'Clicked on Playlist',
             label: props.playlist.name
-        });
+        });*/
     };
 
 
     return (
-            <div onClick={handleShow}>
+        <>
+            <div onClick={handleClick}>
                 <div className={styles.playlistContainer}>
                     <img className={styles.playlistLogo} src={props.playlist.image_url} alt="playlist_logo" />
                     <div className={styles.playlistDetails}>
@@ -50,23 +53,9 @@ function Playlist(props) {
                         </div>
                     </div>
                 </div>
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton onClick={handleClose}>
-                        <Modal.Title>Open Playlist "{props.playlist.name}"</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Please choose whether you have Spotify installed or not.</Modal.Body>
-                    <Modal.Footer>
-                        <Button href={props.playlist.externalUrl} variant="secondary"
-                                onClick={() => handleCloseWithClick(true)}>
-                            Open in Browser
-                        </Button>
-                        <Button href={props.playlist.spotifyUrl} variant="primary"
-                                onClick={() => handleCloseWithClick(false)}>
-                            Open in Spotify
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
+            <OpenPlaylistDialog playlist={props.playlist} show={isDialogOpen} handleClose={handleClose} handleClick={handleCloseWithClick}/>
+        </>
     )
 }
 
