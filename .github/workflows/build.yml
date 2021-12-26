@@ -89,7 +89,7 @@ jobs:
             music/build
 
   deploy-frontend:
-    name: Deploy Frontend to Production
+    name: Deploy Frontend to AWS S3
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/master'
@@ -103,14 +103,8 @@ jobs:
           name: frontend
           path: music/build
 
-      - name: FTP Deployment Frontend
-        uses: airvzxf/ftp-deployment-action@latest
-        with:
-          server: ${{ secrets.FTP_URL }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: music/build/
-          delete: true
+      - name: S3 Deployment Frontend
+        run: aws s3 cp music/build s3://music.kevin-kraus.net/ --recursive
 
   deploy-backend:
     name: Deploy API to Production
