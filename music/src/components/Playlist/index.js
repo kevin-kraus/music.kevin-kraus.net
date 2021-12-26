@@ -51,7 +51,7 @@ function Playlist(props) {
                     </div>
                 </div>
                 <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton onClick={handleClose}>
                         <Modal.Title>Open Playlist "{props.playlist.name}"</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Please choose whether you have Spotify installed or not.</Modal.Body>
