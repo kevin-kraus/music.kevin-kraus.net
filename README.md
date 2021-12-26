@@ -7,7 +7,7 @@ Website to easily share my Spotify playlists.
 
 **Proudly hosted on AWS Infrastructure since 26.12.2021**
 
-<img style="background-color: white; padding: 10px" src="https://d0.awsstatic.com/logos/powered-by-aws.png"/>
+![Powered by AWS](https://d0.awsstatic.com/logos/powered-by-aws.png")
 
 All playlists are dynamically fetched from the [Spotify Web API](https://developer.spotify.com/).
 
