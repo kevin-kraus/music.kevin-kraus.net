@@ -9,14 +9,12 @@ on:
     branches:
       - master
 jobs:
-
   build:
     name: Build Frontend
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 10.x ]
-    needs: update-version
     steps:
       - uses: actions/checkout@v2
 
