@@ -9,8 +9,8 @@ export const theme = createTheme({
         main: '#05acc0',
       },
       background: {
-        default: '#14161A',
-        paper: '#1f2228',
+        default: '#282C34',
+        paper: '#333842',
       },
       text: {
         primary: 'rgba(255,255,255,0.87)',
