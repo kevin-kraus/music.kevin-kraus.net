@@ -9,48 +9,6 @@ on:
     branches:
       - master
 jobs:
-  update-version:
-    name: Update Version
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
-
-      - name: Git Version
-        id: get-version
-        uses: codacy/git-version@2.2.0
-
-      - name: Replace Version in package.json
-        uses: mingjun97/file-regex-replace@v1
-        with:
-          regex: '"version": "(.*)",'
-          replacement: '"version": "${{ steps.get-version.outputs.version }}",'
-          flags: "g"
-          include: 'package\.json'
-          exclude: '.^'
-          encoding: 'utf8'
-          path: './music'
-
-
-      - name: Commit & push new version
-        uses: EndBug/add-and-commit@v7
-        if: github.ref == 'refs/heads/master'
-        with:
-          add: 'music/package.json'
-          message: 'Bump version to: ${{ steps.get-version.outputs.version }}'
-          branch: master
-          push: true
-          signoff: true
-          tag: 'v${{ steps.get-version.outputs.version }}'
-
-      - name: Archive version artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: versioned-frontend
-          path: ./music
 
   build:
     name: Build Frontend
