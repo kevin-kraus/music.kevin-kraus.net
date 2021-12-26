@@ -7,7 +7,8 @@ const playlistIds = [
                                  "3L7tN4hTe3C7IlseDVSOuA",
                                  "0tqmzFROrtDBtpdB6EKyd8",
                                  "32MbUaD4VMAMfNvXdisnIC",
-                                 "6fpG9WRdgBryApAVsLyb6I"
+                                 "6fpG9WRdgBryApAVsLyb6I",
+                                 "5hgZAcrmo7EhxS5eniOY9n"
                             ];
 const handler = async (event) => {
     // TODO implement
