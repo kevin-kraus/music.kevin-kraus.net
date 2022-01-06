@@ -71,26 +71,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Replace Spotify Client ID
-        uses: jwsi/secret-parser@v1
-        with:
-          # File where GitHub Actions Secrets references should be parsed and replaced
-          filename: music-api/function/spotifyService.js
-          # Name of secret to search for in the designated file
-          secret-name: "SPOTIFY_CLIENT_ID"
-          # Value of secret to replace reference with in designated file
-          secret-value: ${{ secrets.SPOTIFY_CLIENT_ID  }}
-
-      - name: Replace Spotify Client Secret
-        uses: jwsi/secret-parser@v1
-        with:
-          # File where GitHub Actions Secrets references should be parsed and replaced
-          filename: music-api/function/spotifyService.js
-          # Name of secret to search for in the designated file
-          secret-name: "SPOTIFY_CLIENT_SECRET"
-          # Value of secret to replace reference with in designated file
-          secret-value: ${{ secrets.SPOTIFY_CLIENT_SECRET  }}
-
       - name: Install dependencies
         working-directory: music-api/function
         run: yarn
