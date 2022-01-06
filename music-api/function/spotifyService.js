@@ -6,8 +6,8 @@ import axios from 'axios'
 async function getAuthToken() {
     // Get AccessToken from Spotify Web API
     let uri = 'https://accounts.spotify.com/api/token';
-    let clientId = "${{ secrets.SPOTIFY_CLIENT_ID }}"
-    let clientSecret = "${{ secrets.SPOTIFY_CLIENT_SECRET }}"
+    let clientId = process.env.API_CLIENT_ID
+    let clientSecret = process.env.API_CLIENT_SECRET
 
 
     let headers = {

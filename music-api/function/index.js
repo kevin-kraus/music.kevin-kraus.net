@@ -10,7 +10,6 @@ const playlistIds = [
                                  "6fpG9WRdgBryApAVsLyb6I"
                             ];
 const handler = async (event) => {
-    // TODO implement
     const accessToken = await getAuthToken();
     const fetchedPlaylists = [];
     
