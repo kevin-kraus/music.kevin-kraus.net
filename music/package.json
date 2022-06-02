@@ -14,7 +14,7 @@
     "install": "^0.13.0",
     "moment": "^2.29.2",
     "node": "latest",
-    "npm": "^8.3.0",
+    "npm": "^8.11.0",
     "react": "^17.0.1",
     "react-bootstrap": "latest",
     "react-dom": "^17.0.1",
