@@ -12,7 +12,7 @@
     "axios": "latest",
     "bootstrap": "^4.5.3",
     "install": "^0.13.0",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "node": "latest",
     "npm": "^8.3.0",
     "react": "^17.0.1",
